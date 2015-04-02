@@ -73,7 +73,7 @@ loop do
       puts "<< You have no torpedos left. Player2 WINS! >>"
     end
 
-    puts "<< Select position (row A-J and a column 1-10) to aim your torpedo at: >>"
+    puts "<< Select position (row A-T and a column 1-20) to aim your torpedo at: >>"
         @torp_position = gets.chomp.to_s
 
 #checks to see if the position was already played
@@ -83,28 +83,88 @@ loop do
 #if not, goes ahead and checks to see if it is a hit
         elsif
             if board1.ship1.include?(@torp_position) == true
-              puts "<<launching torpedo ~~~~~~-----====>>>"
-              sleep 0.5
               system "clear"
-              puts "<<HIT!>>"
+              puts "<< launching torpedo..............."
+              puts "        ~~     (/_____________________"
+              puts "     ~~~~     <))_____________________}"
+              puts "       ~~~     (/   "
+              sleep 1
+              system "clear"
+              puts "      ..-^~~~^-.."
+              puts "    .~           ~."
+              puts "   (;:           :;)"
+              puts "    (:           :)"
+              puts "      ':._   _.:'"
+              puts "          | |"
+              puts "        (=====)"
+              puts "          | |"
+              puts "          | |"
+              puts "          | |"
+              puts "       ((/  \\))"
+              puts "        <<HIT!>>"
               @ship1_hits << @torp_position
             elsif board1.ship2.include?(@torp_position) == true
-              puts "<<launching torpedo ~~~~~~-----====>>>"
-              sleep 0.5
               system "clear"
-              puts "<<HIT!>>"
+              puts "<< launching torpedo..............."
+              puts "        ~~     (/_____________________"
+              puts "     ~~~~     <))_____________________}"
+              puts "       ~~~     (/   "
+              sleep 1
+              system "clear"
+              puts "      ..-^~~~^-.."
+              puts "    .~           ~."
+              puts "   (;:           :;)"
+              puts "    (:           :)"
+              puts "      ':._   _.:'"
+              puts "          | |"
+              puts "        (=====)"
+              puts "          | |"
+              puts "          | |"
+              puts "          | |"
+              puts "       ((/  \\))"
+              puts "        <<HIT!>>"
               @ship2_hits << @torp_position
             elsif board1.ship3.include?(@torp_position) == true
-              puts "<<launching torpedo ~~~~~~-----====>>>"
-              sleep 0.5
               system "clear"
-              puts "<<HIT!>>"
+              puts "launching torpedo..............."
+              puts "        ~~     (/_____________________"
+              puts "     ~~~~     <))_____________________}"
+              puts "       ~~~     (/   "
+              sleep 1
+              system "clear"
+              puts "      ..-^~~~^-.."
+              puts "    .~           ~."
+              puts "   (;:           :;)"
+              puts "    (:           :)"
+              puts "      ':._   _.:'"
+              puts "          | |"
+              puts "        (=====)"
+              puts "          | |"
+              puts "          | |"
+              puts "          | |"
+              puts "       ((/  \\))"
+              puts "        <<HIT!>>"
               @ship3_hits << @torp_position
             elsif board1.ship4.include?(@torp_position)== true
-              puts "<<launching torpedo ~~~~~~-----====>>>"
-              sleep 0.5
               system "clear"
-              puts "<<HIT!>>"
+              puts "launching torpedo..............."
+              puts "        ~~     (/_____________________"
+              puts "     ~~~~     <))_____________________}"
+              puts "       ~~~     (/   "
+              sleep 1
+              system "clear"
+              puts "      ..-^~~~^-.."
+              puts "    .~           ~."
+              puts "   (;:           :;)"
+              puts "    (:           :)"
+              puts "      ':._   _.:'"
+              puts "          | |"
+              puts "        (=====)"
+              puts "          | |"
+              puts "          | |"
+              puts "          | |"
+              puts "       ((/  \\))"
+              puts "        <<HIT!>>"
               @ship4_hits << @torp_position
             end
 
@@ -123,22 +183,28 @@ loop do
 
 #checks to see if all ships have been sunk
               elsif @turnhistory.count == 15
-                  puts "<< YOU SANK ALL ENEMY BATTLESHIPS! CONGRATULATIONS! >>"
+                  puts "<< YOU SANK ALL ENEMY BATTLESHIPS! Player1 Wins! >>"
+                  exit
 
               end
 
 #checks to see make sure the position is within the board and returns a miss
             elsif board1.board.include?(@torp_position) == true
-              puts "<< launching torpedo ~~~~~------====>>>"
-              sleep 0.5
               system "clear"
-              puts "<< miss >>"
+              puts "launching torpedo..............."
+              puts "        ~~     (/_____________________"
+              puts "     ~~~~     <))_____________________}"
+              puts "       ~~~     (/   "
+              sleep 1
+              system "clear"
+              puts ")`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_"
+              puts "                       << miss >>"
               Turn.create(name: "player1", position: @torp_position, h_or_m: "miss")
               @turnhistory << @torp_position
               board1.board.map! {|x| x == @torp_position? " O ": x}
 
             else
-              puts "<< Please enter a combination of A-J and 1-10: >>"
+              puts "<< Please enter a combination of A-T and 1-20: >>"
             end
 
 
@@ -154,7 +220,7 @@ loop do
           exit
         end
 
-        puts "<< Select position (row A-J and a column 1-10) to aim your torpedo at: >>"
+        puts "<< Select position (row A-T and a column 1-20) to aim your torpedo at: >>"
             @torp_position = gets.chomp.to_s
 
     #checks to see if the position was already played
@@ -164,28 +230,88 @@ loop do
     #if not, goes ahead and checks to see if it is a hit
             elsif
                 if board2.ship1_p2.include?(@torp_position) == true
-                  puts "<<launching torpedo ~~~~~~-----====>>>"
-                  sleep 0.5
                   system "clear"
-                  puts "<<HIT!>>"
+                  puts "launching torpedo..............."
+                  puts "        ~~     (/_____________________"
+                  puts "     ~~~~     <))_____________________}"
+                  puts "       ~~~     (/   "
+                  sleep 1
+                  system "clear"
+                  puts "      ..-^~~~^-.."
+                  puts "    .~           ~."
+                  puts "   (;:           :;)"
+                  puts "    (:           :)"
+                  puts "      ':._   _.:'"
+                  puts "          | |"
+                  puts "        (=====)"
+                  puts "          | |"
+                  puts "          | |"
+                  puts "          | |"
+                  puts "       ((/  \\))"
+                  puts "        <<HIT!>>"
                   @ship1_hits2 << @torp_position
                 elsif board2.ship2_p2.include?(@torp_position) == true
-                  puts "<<launching torpedo ~~~~~~-----====>>>"
-                  sleep 0.5
                   system "clear"
-                  puts "<<HIT!>>"
+                  puts "launching torpedo..............."
+                  puts "        ~~     (/_____________________"
+                  puts "     ~~~~     <))_____________________}"
+                  puts "       ~~~     (/   "
+                  sleep 1
+                  system "clear"
+                  puts "      ..-^~~~^-.."
+                  puts "    .~           ~."
+                  puts "   (;:           :;)"
+                  puts "    (:           :)"
+                  puts "      ':._   _.:'"
+                  puts "          | |"
+                  puts "        (=====)"
+                  puts "          | |"
+                  puts "          | |"
+                  puts "          | |"
+                  puts "       ((/  \\))"
+                  puts "        <<HIT!>>"
                   @ship2_hits2 << @torp_position
                 elsif board2.ship3_p2.include?(@torp_position) == true
-                  puts "<<launching torpedo ~~~~~~-----====>>>"
-                  sleep 0.5
                   system "clear"
-                  puts "<<HIT!>>"
+                  puts "launching torpedo..............."
+                  puts "        ~~     (/_____________________"
+                  puts "     ~~~~     <))_____________________}"
+                  puts "       ~~~     (/   "
+                  sleep 1
+                  system "clear"
+                  puts "      ..-^~~~^-.."
+                  puts "    .~           ~."
+                  puts "   (;:           :;)"
+                  puts "    (:           :)"
+                  puts "      ':._   _.:'"
+                  puts "          | |"
+                  puts "        (=====)"
+                  puts "          | |"
+                  puts "          | |"
+                  puts "          | |"
+                  puts "       ((/  \\))"
+                  puts "        <<HIT!>>"
                   @ship3_hits2 << @torp_position
                 elsif board2.ship4_p2.include?(@torp_position)== true
-                  puts "<<launching torpedo ~~~~~~-----====>>>"
-                  sleep 0.5
                   system "clear"
-                  puts "<<HIT!>>"
+                  puts "launching torpedo..............."
+                  puts "        ~~     (/_____________________"
+                  puts "     ~~~~     <))_____________________}"
+                  puts "       ~~~     (/   "
+                  sleep 1
+                  system "clear"
+                  puts "      ..-^~~~^-.."
+                  puts "    .~           ~."
+                  puts "   (;:           :;)"
+                  puts "    (:           :)"
+                  puts "      ':._   _.:'"
+                  puts "          | |"
+                  puts "        (=====)"
+                  puts "          | |"
+                  puts "          | |"
+                  puts "          | |"
+                  puts "       ((/  \\))"
+                  puts "        <<HIT!>>"
                   @ship4_hits2 << @torp_position
                 end
 
@@ -203,21 +329,28 @@ loop do
 
     #checks to see if all ships have been sunk
                     elsif @turnhistory2.count == 15
-                        puts "<< YOU SANK ALL ENEMY BATTLESHIPS! CONGRATULATIONS! >>"
+                        puts "<< YOU SANK ALL ENEMY BATTLESHIPS! Player2 Wins! >>"
+                        exit
+
                     end
 
     #checks to see make sure the position is within the board and returns a miss
                   elsif board2.board.include?(@torp_position) == true
-                  puts "<< launching torpedo ~~~~~------====>>>"
-                  sleep 0.5
+                    system "clear"
+                    puts "launching torpedo..............."
+                    puts "        ~~     (/_____________________"
+                    puts "     ~~~~     <))_____________________}"
+                    puts "       ~~~     (/   "
+                  sleep 1
                   system "clear"
-                  puts "<< miss >>"
+                  puts ")`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_"
+                  puts "                    << miss >>"
                   Turn.create(name: "player2", position: @torp_position, h_or_m: "miss")
                   @turnhistory2 << @torp_position
                   board2.board.map! {|x| x == @torp_position? " O ": x}
 
                 else
-                  puts "<< Please enter a combination of A-J and 1-10: >>"
+                  puts "<< Please enter a combination of A-T and 1-20: >>"
                 end
               end
 
