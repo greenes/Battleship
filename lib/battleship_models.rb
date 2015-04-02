@@ -14,16 +14,9 @@ def clean_as_a_whistle
 end
 
 
-class Player1 < ActiveRecord::Base
-  has_many :turns
-end
-
-class Player2 < ActiveRecord::Base
-  has_many :turns
-end
-
 class Turn < ActiveRecord::Base
   has_many :players
+  # validations :position, uniqueness: true
 end
 
 
@@ -34,10 +27,6 @@ class CreateGame < ActiveRecord::Migration
       column.string :name
       column.string :position
       column.string :h_or_m
-    end
-
-    create_table :players do |column|
-      column.string :name
     end
 
   end
@@ -54,6 +43,7 @@ class Board
         @x = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T"]
         @y = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
         @positions = @x.product(@y)
+      end
 
 
         def print_board
@@ -82,39 +72,16 @@ class Board
         end
 
 
-        def print_board2
-          @board2 = @positions.map! {|positions| positions.join("")}
-           puts @board2[0..19].join("  ")
-           puts @board2[20..39].join("  ")
-           puts @board2[40..59].join("  ")
-           puts @board2[60..79].join("  ")
-           puts @board2[80..99].join("  ")
-           puts @board2[100..119].join("  ")
-           puts @board2[120..139].join("  ")
-           puts @board2[140..159].join("  ")
-           puts @board2[160..179].join("  ")
-           puts @board2[180..199].join("  ")
-           puts @board2[200..219].join("  ")
-           puts @board2[220..239].join("  ")
-           puts @board2[240..259].join("  ")
-           puts @board2[260..279].join("  ")
-           puts @board2[280..299].join("  ")
-           puts @board2[300..319].join("  ")
-           puts @board2[320..339].join("  ")
-           puts @board2[340..359].join("  ")
-           puts @board2[360..379].join("  ")
-           puts @board2[380..399].join("  ")
-         end
-       end
-
-
   def add_ships
 
-      @ship1_ary = [["A1", "A2", "A3", "A4", "A5"]]
+      @ship1_ary = [["A1", "A2", "A3", "A4", "A5"], ["B2", "B3", "B4", "B5", "B6"],
+      ["B9", "B10", "B11", "B12", "B13"], ["C2", "C3", "C4", "C5", "C6"], ["C10", "C11", "C12", "C13", "C14"],
+      ["G8", "G9", "G10", "G11", "G12"], ["J10", "J11", "J12", "J13", "J14"], ["M5", "M6", "M7", "M8", "M9"]]
       @ship1_ary.shuffle!
       @ship1 = @ship1_ary[0]
 
-      @ship2_ary = [["E7", "F7", "G7", "H7", "I7"]]
+      @ship2_ary = [["E7", "F7", "G7", "H7", "I7"], ["B2", "C2", "D2", "E2", "F2"], ["G9", "H9", "I9", "J9", "K9"],
+      ["J15", "K15", "L15", "M15", "N15"], ["P19", "Q19", "R19", "S19", "T19"], ["D7", "E7", "F7", "G7", "H7"]]
       @ship2_ary.shuffle!
       @ship2 = @ship2_ary[0]
 
@@ -126,6 +93,25 @@ class Board
       @ship4_ary.shuffle!
       @ship4 = @ship4_ary[0]
 
+      @ship1_ary_p2 = [["A1", "A2", "A3", "A4", "A5"], ["B2", "B3", "B4", "B5", "B6"],
+      ["B9", "B10", "B11", "B12", "B13"], ["C2", "C3", "C4", "C5", "C6"], ["C10", "C11", "C12", "C13", "C14"],
+      ["G8", "G9", "G10", "G11", "G12"], ["J10", "J11", "J12", "J13", "J14"], ["M5", "M6", "M7", "M8", "M9"]]
+      @ship1_ary_p2.shuffle!
+      @ship1_p2 = @ship1_ary_p2[0]
+
+      @ship2_ary_p2 = [["E7", "F7", "G7", "H7", "I7"], ["B2", "C2", "D2", "E2", "F2"], ["G9", "H9", "I9", "J9", "K9"],
+      ["J15", "K15", "L15", "M15", "N15"], ["P19", "Q19", "R19", "S19", "T19"], ["D7", "E7", "F7", "G7", "H7"]]
+      @ship2_ary_p2.shuffle!
+      @ship2_p2 = @ship2_ary_p2[0]
+
+      @ship3_ary_p2 = [["S6", "S7", "S8"]]
+      @ship3_ary_p2.shuffle!
+      @ship3_p2 = @ship3_ary_p2[0]
+
+      @ship4_ary_p2 = [["N1", "O1"]]
+      @ship4_ary_p2.shuffle!
+      @ship4_p2 = @ship4_ary_p2[0]
+
       puts "ship1: #{@ship1}"
       puts "ship2: #{@ship2}"
       puts "ship3: #{@ship3}"
@@ -134,6 +120,4 @@ class Board
 end
 end
 
-
-#
 # binding.pry
