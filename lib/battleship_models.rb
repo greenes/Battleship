@@ -35,19 +35,18 @@ end
 
 
 class Board
-  attr_accessor :board, :positions, :num_players, :ship1, :ship2, :ship3, :ship4
+  attr_accessor :board, :positions, :ship1, :ship2, :ship3, :ship4, :ship1_p2, :ship2_p2, :ship3_p2, :ship4_p2
 
   def initialize
-    @num_players = num_players
 
         @x = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T"]
         @y = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
         @positions = @x.product(@y)
+        @board = @positions.map! {|positions| positions.join("")}
       end
 
 
         def print_board
-          @board = @positions.map! {|positions| positions.join("")}
           puts @board[0..19].join("  ")
           puts @board[20..39].join("  ")
           puts @board[40..59].join("  ")
