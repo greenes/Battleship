@@ -2,6 +2,7 @@ require_relative 'battleship_models'
 require 'pry'
 
 loop do
+  system "clear"
 puts " _______  _______  _______  _______  ___      _______  _______  __   __  ___   _______"
 puts "|  _    ||   _   ||       ||       ||   |    |       ||       ||  | |  ||   | |       |"
 puts "| |_|   ||  |_|  ||_     _||_     _||   |    |    ___||  _____||  |_|  ||   | |    _  |"
@@ -11,7 +12,7 @@ puts "| |_|   ||   _   |  |   |    |   |  |       ||   |___  _____| ||   _   || 
 puts "|_______||__| |__|  |___|    |___|  |_______||_______||_______||__| |__||___| |___|"
 
 
-puts "(new) game or (load) game?"
+puts "                          (new) game or (load) game?"
 res_or_new = gets.chomp
     if res_or_new == "new"
       Turn.delete_all
@@ -84,10 +85,9 @@ loop do
         elsif
             if board1.ship1.include?(@torp_position) == true
               system "clear"
-              puts "<< launching torpedo..............."
-              puts "        ~~     (/_____________________"
-              puts "     ~~~~     <))_____________________}"
-              puts "       ~~~     (/   "
+              puts "        ~~     (\\\\_____________________"
+              puts "     ~~~~     <))_____________#{@torp_position}_______}"
+              puts "       ~~~     (//   "
               sleep 1
               system "clear"
               puts "      ..-^~~~^-.."
@@ -105,10 +105,9 @@ loop do
               @ship1_hits << @torp_position
             elsif board1.ship2.include?(@torp_position) == true
               system "clear"
-              puts "<< launching torpedo..............."
-              puts "        ~~     (/_____________________"
-              puts "     ~~~~     <))_____________________}"
-              puts "       ~~~     (/   "
+              puts "        ~~     (\\\\_____________________"
+              puts "     ~~~~     <))_____________#{@torp_position}_______}"
+              puts "       ~~~     (//   "
               sleep 1
               system "clear"
               puts "      ..-^~~~^-.."
@@ -126,10 +125,9 @@ loop do
               @ship2_hits << @torp_position
             elsif board1.ship3.include?(@torp_position) == true
               system "clear"
-              puts "launching torpedo..............."
-              puts "        ~~     (/_____________________"
-              puts "     ~~~~     <))_____________________}"
-              puts "       ~~~     (/   "
+              puts "        ~~     (\\\\_____________________"
+              puts "     ~~~~     <))_____________#{@torp_position}_______}"
+              puts "       ~~~     (//   "
               sleep 1
               system "clear"
               puts "      ..-^~~~^-.."
@@ -148,9 +146,9 @@ loop do
             elsif board1.ship4.include?(@torp_position)== true
               system "clear"
               puts "launching torpedo..............."
-              puts "        ~~     (/_____________________"
-              puts "     ~~~~     <))_____________________}"
-              puts "       ~~~     (/   "
+              puts "        ~~     (\\\\_____________________"
+              puts "     ~~~~     <))_____________#{@torp_position}_______}"
+              puts "       ~~~     (//   "
               sleep 1
               system "clear"
               puts "      ..-^~~~^-.."
@@ -192,9 +190,9 @@ loop do
             elsif board1.board.include?(@torp_position) == true
               system "clear"
               puts "launching torpedo..............."
-              puts "        ~~     (/_____________________"
-              puts "     ~~~~     <))_____________________}"
-              puts "       ~~~     (/   "
+              puts "        ~~     (\\\\_____________________"
+              puts "     ~~~~     <))_____________#{@torp_position}_______}"
+              puts "       ~~~     (//   "
               sleep 1
               system "clear"
               puts ")`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_"
@@ -232,9 +230,9 @@ loop do
                 if board2.ship1_p2.include?(@torp_position) == true
                   system "clear"
                   puts "launching torpedo..............."
-                  puts "        ~~     (/_____________________"
-                  puts "     ~~~~     <))_____________________}"
-                  puts "       ~~~     (/   "
+                  puts "        ~~     (\\\\_____________________"
+                  puts "     ~~~~     <))_____________#{@torp_position}_______}"
+                  puts "       ~~~     (//   "
                   sleep 1
                   system "clear"
                   puts "      ..-^~~~^-.."
@@ -253,9 +251,9 @@ loop do
                 elsif board2.ship2_p2.include?(@torp_position) == true
                   system "clear"
                   puts "launching torpedo..............."
-                  puts "        ~~     (/_____________________"
-                  puts "     ~~~~     <))_____________________}"
-                  puts "       ~~~     (/   "
+                  puts "        ~~     (\\\\_____________________"
+                  puts "     ~~~~     <))_____________#{@torp_position}_______}"
+                  puts "       ~~~     (//   "
                   sleep 1
                   system "clear"
                   puts "      ..-^~~~^-.."
@@ -274,9 +272,9 @@ loop do
                 elsif board2.ship3_p2.include?(@torp_position) == true
                   system "clear"
                   puts "launching torpedo..............."
-                  puts "        ~~     (/_____________________"
-                  puts "     ~~~~     <))_____________________}"
-                  puts "       ~~~     (/   "
+                  puts "        ~~     (\\\\_____________________"
+                  puts "     ~~~~     <))_____________#{@torp_position}_______}"
+                  puts "       ~~~     (//   "
                   sleep 1
                   system "clear"
                   puts "      ..-^~~~^-.."
@@ -295,9 +293,9 @@ loop do
                 elsif board2.ship4_p2.include?(@torp_position)== true
                   system "clear"
                   puts "launching torpedo..............."
-                  puts "        ~~     (/_____________________"
-                  puts "     ~~~~     <))_____________________}"
-                  puts "       ~~~     (/   "
+                  puts "        ~~     (\\\\_____________________"
+                  puts "     ~~~~     <))_____________#{@torp_position}_______}"
+                  puts "       ~~~     (//   "
                   sleep 1
                   system "clear"
                   puts "      ..-^~~~^-.."
@@ -338,9 +336,9 @@ loop do
                   elsif board2.board.include?(@torp_position) == true
                     system "clear"
                     puts "launching torpedo..............."
-                    puts "        ~~     (/_____________________"
-                    puts "     ~~~~     <))_____________________}"
-                    puts "       ~~~     (/   "
+                    puts "        ~~     (\\\\_____________________"
+                    puts "     ~~~~     <))_____________#{@torp_position}_______}"
+                    puts "       ~~~     (//   "
                   sleep 1
                   system "clear"
                   puts ")`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_"
@@ -358,15 +356,16 @@ loop do
 
 # Let player view a list of the positions they have slected and if it was a hit or a miss
         when 2
+          system "clear"
           puts "<< Enter player1 or player2 to view their score >>"
           player = gets.chomp
-          if player == "player1"
+          if player.downcase == "player1"
             @player_turns = Turn.where(name: "player1")
             @player_turns.each do |turn|
             puts "#{turn.position} : #{turn.h_or_m}"
           end
 
-          elsif player == "player2"
+        elsif player.downcase == "player2"
             @player_turns = Turn.where(name: "player2")
             @player_turns.each do |turn|
             puts "#{turn.position} : #{turn.h_or_m}"
@@ -390,7 +389,21 @@ loop do
 
 
         when 4
-          puts "<< Until we meet again! >>"
+          system "clear"
+          puts "                               |__"
+          puts "                               |\\/"
+          puts "                                ---"
+          puts "                              / | ["
+          puts "                         !      | |||"
+          puts "                       _/|     _/|-++'"
+          puts "                   +  +--|    |--|--|_ |-"
+          puts "                      { /|__|  |/\\__|  |--- |||__/"
+          puts "                     +---------------___[}-_===_.'____               /\\"
+          puts "                  ____`-' ||___-{]_| _[}-  |     |_[___\==--          \\/   _"
+          puts "       __..._____--==/___]_|__|_____________________________[___\==--____,------' .7"
+          puts "      |                                                                     BB-61/"
+          puts "      \\_________________________________________________________________________|"
+          puts "                             << Until we meet again..... >>"
           exit
 
         else

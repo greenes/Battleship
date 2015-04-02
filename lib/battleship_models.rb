@@ -84,11 +84,13 @@ class Board
       @ship2_ary.shuffle!
       @ship2 = @ship2_ary[0]
 
-      @ship3_ary = [["S6", "S7", "S8"]]
+      @ship3_ary = [["S6", "S7", "S8"], ["S1", "S2", "S3"], ["S4", "S5", "S6"], ["S9", "S10", "S11"], ["S13", "S14", "S15"],
+      ["S17", "S18", "S19"], ["M1", "M2", "M3"], ["M10", "M11", "M12"], ["M12", "M13", "M14"], ["A6", "A7", "A8"], ["A9", "A10", "A11"],
+      ["A12", "A13", "A14"], ["A15", "A16", "A17"], ["A18", "A19", "A20"]]
       @ship3_ary.shuffle!
       @ship3 = @ship3_ary[0]
 
-      @ship4_ary = [["N1", "O1"]]
+      @ship4_ary = [["N1", "O1"], ["B6", "C6"], ["T1", "T2"], ["T11", "T12"], ["Q8", "R8"], ["P19", "P20"], ["B7, B8"]]
       @ship4_ary.shuffle!
       @ship4 = @ship4_ary[0]
 
@@ -103,18 +105,15 @@ class Board
       @ship2_ary_p2.shuffle!
       @ship2_p2 = @ship2_ary_p2[0]
 
-      @ship3_ary_p2 = [["S6", "S7", "S8"]]
+      @ship3_ary_p2 = [["S6", "S7", "S8"], ["S1", "S2", "S3"], ["S4", "S5", "S6"], ["S9", "S10", "S11"], ["S13", "S14", "S15"],
+      ["S17", "S18", "S19"], ["M1", "M2", "M3"], ["M10", "M11", "M12"], ["M12", "M13", "M14"], ["A6", "A7", "A8"], ["A9", "A10", "A11"],
+      ["A12", "A13", "A14"], ["A15", "A16", "A17"], ["A18", "A19", "A20"]]
       @ship3_ary_p2.shuffle!
       @ship3_p2 = @ship3_ary_p2[0]
 
-      @ship4_ary_p2 = [["N1", "O1"]]
+      @ship4_ary_p2 =  [["N1", "O1"], ["B6", "C6"], ["T1", "T2"], ["T11", "T12"], ["Q8", "R8"], ["P19", "P20"], ["B7, B8"]]
       @ship4_ary_p2.shuffle!
       @ship4_p2 = @ship4_ary_p2[0]
-
-      puts "ship1: #{@ship1}"
-      puts "ship2: #{@ship2}"
-      puts "ship3: #{@ship3}"
-      puts "ship4: #{@ship4}"
 
 end
 end
