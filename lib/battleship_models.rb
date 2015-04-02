@@ -16,7 +16,7 @@ end
 
 class Turn < ActiveRecord::Base
   has_many :players
-  # validations :position, uniqueness: true
+  # validations :position, :h_or_m, :name, presence: true
 end
 
 
@@ -116,6 +116,45 @@ class Board
       @ship4_p2 = @ship4_ary_p2[0]
 
 end
+
+      def battleship
+        system "clear"
+        puts "                               |__"
+        puts "                               |\\/"
+        puts "                                ---"
+        puts "                              / | ["
+        puts "                         !      | |||"
+        puts "                       _/|     _/|-++'"
+        puts "                   +  +--|    |--|--|_ |-"
+        puts "                      { /|__|  |/\\__|  |--- |||__/"
+        puts "                     +---------------___[}-_===_.'____               /\\"
+        puts "                  ____`-' ||___-{]_| _[}-  |     |_[___\==--          \\/   _"
+        puts "       __..._____--==/___]_|__|_____________________________[___\==--____,------' .7"
+        puts "      |                                                                     BB-61/"
+        puts "      \\_________________________________________________________________________|"
+      end
+
+      def hit
+        puts "                          ..-^~~~^-.."
+        puts "                        .~           ~."
+        puts "                       (;:           :;)"
+        puts "                        (:           :)"
+        puts "                          ':._   _.:'"
+        puts "                              | |"
+        puts "                            (=====)"
+        puts "                              | |"
+        puts "                              | |"
+        puts "                              | |"
+        puts "                           ((/  \\))"
+        puts "                           <<HIT!>>"
+      end
+
 end
+
+
+
+
+
+
 
 # binding.pry
