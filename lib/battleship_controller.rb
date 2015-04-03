@@ -50,6 +50,8 @@ require 'pry'
 #Clears data from the SQL table with all the turns from the previous game
               Turn.delete_all
               Ship.delete_all
+              board1.add_ships
+              board2.add_ships
 #Prints out what the board looks like
                 system "clear"
                 board1.print_board
