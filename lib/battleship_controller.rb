@@ -49,6 +49,7 @@ require 'pry'
             if res_or_new == "new"
 #Clears data from the SQL table with all the turns from the previous game
               Turn.delete_all
+              Ship.delete_all
 #Prints out what the board looks like
                 system "clear"
                 board1.print_board
@@ -95,7 +96,7 @@ require 'pry'
                       end
                     end
                   end
-binding.pry
+
                   Turn.where(name: "player1", h_or_m: "miss").each do |turn|
                     @turnhistory << turn.position
                     board1.board.map! do |x|
