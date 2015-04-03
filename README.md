@@ -11,6 +11,7 @@ WDI Project 1 - Battleship
 
 
 User stories: https://trello.com/b/dOUo2ZXN/battleship
+ERD: https://docs.google.com/drawings/d/1jZJ0VrN2RxMt2akbuUp4GZc4KxD5hzRr5G3FX0HZzXY/edit?usp=sharing
 
 This program is a 2 player game of battleship.
 
