@@ -16,7 +16,8 @@ require 'pry'
 
       class Turn < ActiveRecord::Base
         has_one :player
-        valitade :name, presence: true
+        # validates :name, :position, :h_or_m, :presence => true
+        # validates :position, :uniqueness => true
       end
 
       class Ship < ActiveRecord::Base
