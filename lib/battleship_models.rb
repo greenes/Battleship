@@ -102,7 +102,7 @@ class Board
       @ship3 = @ship3_ary[0]
 
       @ship4_ary =  [["N1", "O1"], ["B6", "C6"], ["T1", "T2"], ["T11", "T12"], ["Q8", "R8"], ["P19", "P20"], ["B7, B8"], ["H19", "H20"],
-      ["H17", "H18"]]
+      ["H17", "H18"], ["T19", "T20"]]
       @ship4_ary.shuffle!
       @ship4 = @ship4_ary[0]
 
@@ -124,7 +124,7 @@ class Board
       @ship3_p2 = @ship3_ary_p2[0]
 
       @ship4_ary_p2 =  [["N1", "O1"], ["B6", "C6"], ["T1", "T2"], ["T11", "T12"], ["Q8", "R8"], ["P19", "P20"], ["B7, B8"], ["H19", "H20"],
-      ["H17", "H18"]]
+      ["H17", "H18"], ["T19", "T20"]]
       @ship4_ary_p2.shuffle!
       @ship4_p2 = @ship4_ary_p2[0]
 
