@@ -59,8 +59,6 @@ require 'pry'
 #One for for each player for counting the hits on each of the ships
 
             elsif res_or_new =="load"
-              board1 = Board.new
-              board2 = Board.new
 
               @ship1 = Ship.find(1).array
 
@@ -131,7 +129,7 @@ require 'pry'
                   Turn.where(name: "player2", ship: "destroyer").each {|turn| @ship3_hits2 << turn.position}
 
                   Turn.where(name: "player2", ship: "submarine").each {|turn| @ship4_hits2 << turn.position}
-binding.pry
+
                 end
 
         loop do

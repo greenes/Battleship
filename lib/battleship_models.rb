@@ -16,8 +16,7 @@ require 'pry'
 
       class Turn < ActiveRecord::Base
         has_one :player
-        # has_one :ship
-        # validations :position, :h_or_m, :name, presence: true
+        valitade :name, presence: true
       end
 
       class Ship < ActiveRecord::Base
@@ -30,7 +29,6 @@ require 'pry'
 
             def initialize
               create_table :turns do |column|
-                # column.belongs_to :ships
                 column.string :name
                 column.string :position
                 column.string :h_or_m
@@ -38,7 +36,6 @@ require 'pry'
               end
 
               create_table :ships do |column|
-                # column.belongs_to :turns
                 column.string :name
                 column.string :array
             end
@@ -103,7 +100,8 @@ class Board
       @ship3_ary.shuffle!
       @ship3 = @ship3_ary[0]
 
-      @ship4_ary = [["N1", "O1"], ["B6", "C6"], ["T1", "T2"], ["T11", "T12"], ["Q8", "R8"], ["P19", "P20"], ["B7, B8"]]
+      @ship4_ary =  [["N1", "O1"], ["B6", "C6"], ["T1", "T2"], ["T11", "T12"], ["Q8", "R8"], ["P19", "P20"], ["B7, B8"], ["H19", "H20"],
+      ["H17", "H18"]]
       @ship4_ary.shuffle!
       @ship4 = @ship4_ary[0]
 
@@ -162,12 +160,6 @@ end
         puts "                           ((/  \\))"
         puts "                           <<HIT!>>"
       end
-
-end
-
-
-def load_turns
-  Turn.create(ships_id: 4, name: "player1", position: "D4", h_or_m: "HIT")
 
 end
 
