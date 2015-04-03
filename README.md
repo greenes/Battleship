@@ -11,11 +11,12 @@ WDI Project 1 - Battleship
 
 
 User stories: https://trello.com/b/dOUo2ZXN/battleship
+
 ERD: https://docs.google.com/drawings/d/1jZJ0VrN2RxMt2akbuUp4GZc4KxD5hzRr5G3FX0HZzXY/edit?usp=sharing
 
-This program is a 2 player game of battleship.
+This program is a 2 person game of battleship.
 
-When the player opens the game, the home screen appears and asks the player to start a new game or 
+When a player opens the game, the home screen appears and asks the player to start a new game or 
 load the previous game.
 
 When a new game is started, 2 boards are created with 4 ships placed randomly throughout each 
@@ -23,7 +24,7 @@ When a new game is started, 2 boards are created with 4 ships placed randomly th
 consecutive spaces). The player sees a menu with options to (1) Launch a torpedo (2) View scores 
 (3) View the boards (4) Quit. Each player has 30 turns, if they run out, the other player wins.
 
-When the player selects (1) player1 is prompted to launch the first torpedo. The game checks to make sure the player 
+When a user selects (1) player1 is prompted to launch the first torpedo. The game checks to make sure the player 
 has turns left. If so, they are asked to enter a position on their board with coordinates A-T and 1-20. 
 When the player enters a position, the game checks make sure the position was not already played, to see 
 if it is a hit or a miss, and to make sure it is within the board. If the position was not already played, and 
