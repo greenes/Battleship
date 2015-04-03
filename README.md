@@ -10,6 +10,8 @@ WDI Project 1 - Battleship
                    |_______||__| |__|  |___|    |___|  |_______||_______||_______||__| |__||___| |___|
 
 
+User stories: https://trello.com/b/dOUo2ZXN/battleship
+
 This program is a 2 player game of battleship.
 
 When the player opens the game, the home screen appears and asks the player to start a new game or 
