@@ -2,7 +2,7 @@ require_relative 'battleship_models'
 require 'pry'
 
         loop do
-          system "clear"
+        system "clear"
         puts "                     _______  _______  _______  _______  ___      _______  _______  __   __  ___   _______"
         puts "                    |  _    ||   _   ||       ||       ||   |    |       ||       ||  | |  ||   | |       |"
         puts "                    | |_|   ||  |_|  ||_     _||_     _||   |    |    ___||  _____||  |_|  ||   | |    _  |"
@@ -14,62 +14,101 @@ require 'pry'
         puts "                                              (new) game or (load) game?"
 
         res_or_new = gets.chomp
+
+#Starts out with empty arrays
+#One for each player for counting and keeping track of all turns
+#One for for each player for counting the number of "hits"
+            @turnhistory = []
+            @hitcounter = []
+            @ship1_hits = []
+            @ship2_hits = []
+            @ship3_hits = []
+            @ship4_hits = []
+
+            @turnhistory2 = []
+            @hitcounter2 = []
+            @ship1_hits2 = []
+            @ship2_hits2 = []
+            @ship3_hits2 = []
+            @ship4_hits2 = []
+#Creates a new board with random ships for player1 and one for player2
+            board1 = Board.new
+            board2 = Board.new
+            board1.add_ships
+            board2.add_ships
+            Ship.create(name: "battleship1", array: board1.ship1)
+            Ship.create(name: "battleship2", array: board1.ship2)
+            Ship.create(name: "destroyer", array: board1.ship3)
+            Ship.create(name: "submarine", array: board1.ship4)
+            Ship.create(name: "battleship1", array: board2.ship1)
+            Ship.create(name: "battleship2", array: board2.ship2)
+            Ship.create(name: "destroyer", array: board2.ship3)
+            Ship.create(name: "submarine", array: board2.ship4)
+
+
             if res_or_new == "new"
 #Clears data from the SQL table with all the turns from the previous game
               Turn.delete_all
-#Creates a new board with random ships for player1 and one for player2
-                  board1 = Board.new
-                  board1.add_ships
-                  board2 = Board.new
-                  board2.add_ships
 #Prints out what the board looks like
-                  system "clear"
-                  board1.print_board
+                system "clear"
+                board1.print_board
 
 #Starts out with empty arrays
 #One for each player for counting and keeping track of all turns
 #One for for each player for counting the number of "hits"
 #One for for each player for counting the hits on each of the ships
-                  @turnhistory = []
-                  @hitcounter = []
-                  @ship1_hits = []
-                  @ship2_hits = []
-                  @ship3_hits = []
-                  @ship4_hits = []
 
-                  @turnhistory2 = []
-                  @hitcounter2 = []
-                  @ship1_hits2 = []
-                  @ship2_hits2 = []
-                  @ship3_hits2 = []
-                  @ship4_hits2 = []
+            elsif res_or_new =="load"
 
-                elsif res_or_new =="load"
+#Populates the arrays with data from the last open game
 
-                  binding.pry
+                  Turn.where(name: "player1", h_or_m: "HIT").each do |turn|
+                    @turnhistory << turn.position
+                    board1.board.map! do |x|
+                      if x == turn.position
+                         x = "[0]"
+                       end
+                     end
+                   end
 
-                  @turnhistory = []
-                  @hitcounter = []
-                  @ship1_hits = []
-                  @ship2_hits = []
-                  @ship3_hits = []
-                  @ship4_hits = []
+                  Turn.where(name: "player2", h_or_m: "HIT").each do |turn|
+                    @turnhistory2 << turn.position
+                    board2.board.map! do |x|
+                      if x == turn.position
+                        x = "[0]"
+                      end
+                    end
+                  end
 
-                  @turnhistory2 = []
-                  @hitcounter2 = []
-                  @ship1_hits2 = []
-                  @ship2_hits2 = []
-                  @ship3_hits2 = []
-                  @ship4_hits2 = []
+                  Turn.where(name: "player1", h_or_m: "miss").each do |turn|
+                    @turnhistory << turn.position
+                    board1.board.map! do |x|
+                      if x == turn.position
+                         x = "[X]"
+                       end
+                     end
+                   end
 
-                  Turn.where(name: "player1").each {|turn| @turnhistory << turn.position}
-                  Turn.where(name: "player2").each {|turn| @turnhistory2 << turn.position}
-                  Turn.where(name: "player1", h_or_m: "HIT").each {|turn| @turnhistory << turn.position}
-                  Turn.where(name: "player2", h_or_m: "HIT").each {|turn| @turnhistory2 << turn.position}
+                  Turn.where(name: "player2", h_or_m: "miss").each do |turn|
+                    @turnhistory2 << turn.position
+                    board2.board.map! do |x|
+                      if x == turn.position
+                        x = "[X]"
+                      end
+                    end
+                  end
+
+                  Turn.where(name: "player1", ship: "battleship1").each {|turn| @ship1_hits << turn.position}
+                  Turn.where(name: "player1", ship: "battleship2").each {|turn| @ship2_hits << turn.position}
+                  Turn.where(name: "player1", ship: "destroyer").each {|turn| @ship3_hits << turn.position}
+                  Turn.where(name: "player1", ship: "submarine").each {|turn| @ship4_hits << turn.position}
+                  Turn.where(name: "player2", ship: "battleship1").each {|turn| @ship1_hits2 << turn.position}
+                  Turn.where(name: "player2", ship: "battleship2").each {|turn| @ship2_hits2 << turn.position}
+                  Turn.where(name: "player2", ship: "destroyer").each {|turn| @ship3_hits2 << turn.position}
+                  Turn.where(name: "player2", ship: "submarine").each {|turn| @ship4_hits2 << turn.position}
 
                 end
 
-#
         loop do
               puts "<< ~~~Enemy ships are in the water!~~~ >>"
               puts "(1) Launch a torpedo"
@@ -115,23 +154,27 @@ require 'pry'
                       sleep 1
                       system "clear"
                       board1.hit
+#Adds the turn as a hit to the player1s database
+#Adds the position to player1's turn history, to player1's hit history, and updates player1's board
                        if board1.ship1.include?(@torp_position) == true
                          @ship1_hits << @torp_position
+                         Turn.create(ships_id: 1, name: "player1", position: @torp_position, h_or_m: "HIT", ship: "battleship1")
                        elsif board1.ship2.include?(@torp_position) == true
                          @ship2_hits << @torp_position
+                         Turn.create(ships_id: 2, name: "player1", position: @torp_position, h_or_m: "HIT", ship: "battleship2")
                        elsif board1.ship3.include?(@torp_position) == true
                          @ship3_hits << @torp_position
+                         Turn.create(ships_id: 3, name: "player1", position: @torp_position, h_or_m: "HIT", ship: "destroyer")
                        elsif board1.ship4.include?(@torp_position)== true
                          @ship4_hits << @torp_position
+                         Turn.create(ships_id: 4, name: "player1", position: @torp_position, h_or_m: "HIT", ship: "submarine")
                        end
                      end
-#Adds the position to player1's turn history, to player1's hit history, and updates player1's board
+
                       @turnhistory << @torp_position
                       @hitcounter << @torp_position
                       board1.board.map! {|x| x == @torp_position? "[X]": x}
 
-#Adds the turn as a hit to the player1s database
-                      Turn.create(name: "player1", position: @torp_position, h_or_m: "HIT")
 
 #Checks to see if a player1 has sunk a full ship of player2's
                       if @ship1_hits.count == 5 || @ship2_hits.count == 5 || @ship3_hits.count == 3 || @ship4_hits.count == 2
@@ -168,7 +211,6 @@ require 'pry'
                     end
 
 
-
               elsif last_turn.name == "player1"
                 system "clear"
                 puts "Player2 turn"
@@ -201,23 +243,26 @@ require 'pry'
                           sleep 1
                           system "clear"
                           board1.hit
+#Adds the turn as a hit to the Turn database
+#Adds the position to player2's turn history, to player2's hit history, and updates player2's board
                            if board2.ship1_p2.include?(@torp_position) == true
                              @ship1_hits2 << @torp_position
+                             Turn.create(ships_id: 5, name: "player2", position: @torp_position, h_or_m: "HIT", ship: "battleship1")
                            elsif board2.ship2_p2.include?(@torp_position) == true
                              @ship2_hits2 << @torp_position
+                             Turn.create(ships_id: 6, name: "player2", position: @torp_position, h_or_m: "HIT", ship: "battleship2")
                            elsif board2.ship3_p2.include?(@torp_position) == true
                              @ship3_hits2 << @torp_position
+                             Turn.create(ships_id: 7, name: "player2", position: @torp_position, h_or_m: "HIT", ship: "destroyer")
                            elsif board2.ship4_p2.include?(@torp_position)== true
                              @ship4_hits2 << @torp_position
+                             Turn.create(ships_id: 8, name: "player2", position: @torp_position, h_or_m: "HIT", ship: "submarine")
                            end
                          end
-#Adds the position to player2's turn history, to player2's hit history, and updates player2's board
+
                           @turnhistory2 << @torp_position
                           @hitcounter2 << @torp_position
                           board2.board.map! {|x| x == @torp_position? "[X]": x}
-
-#Adds the turn as a hit to the Turn database
-                          Turn.create(name: "player2", position: @torp_position, h_or_m: "HIT")
 
 #Checks to see if player 2 has sunk a full ship
                           if @ship1_hits2.count == 5 || @ship2_hits2.count == 5 || @ship3_hits2.count == 3 || @ship4_hits2.count == 2

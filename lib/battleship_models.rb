@@ -1,37 +1,50 @@
 require 'active_record'
 require 'pry'
 
-ActiveRecord::Base.establish_connection(
-  :adapter => "postgresql",
-  :host	=> "localhost",
-  :database => "battleship"
-)
+    ActiveRecord::Base.establish_connection(
+      :adapter => "postgresql",
+      :host	=> "localhost",
+      :database => "battleship"
+    )
 
-def clean_as_a_whistle
-  ActiveRecord::Base.connection.tables.each do |table|
-    ActiveRecord::Base.connection.drop_table(table)
+      def clean_as_a_whistle
+        ActiveRecord::Base.connection.tables.each do |table|
+          ActiveRecord::Base.connection.drop_table(table)
+        end
+      end
+
+
+      class Turn < ActiveRecord::Base
+        has_one :player
+        has_one :ship
+        # validations :position, :h_or_m, :name, presence: true
+      end
+
+      class Ship < ActiveRecord::Base
+        belongs_to :turn
+        serialize :array
+      end
+
+
+  class CreateGame < ActiveRecord::Migration
+
+            def initialize
+              create_table :turns do |column|
+                # column.belongs_to :ships
+                column.string :name
+                column.string :position
+                column.string :h_or_m
+                column.string :ship
+              end
+
+              create_table :ships do |column|
+                # column.belongs_to :turns
+                column.string :name
+                column.string :array
+            end
+          end
+
   end
-end
-
-
-class Turn < ActiveRecord::Base
-  has_many :players
-  # validations :position, :h_or_m, :name, presence: true
-end
-
-
-class CreateGame < ActiveRecord::Migration
-
-  def initialize
-    create_table :turns do |column|
-      column.string :name
-      column.string :position
-      column.string :h_or_m
-    end
-
-  end
-
-end
 
 
 class Board
@@ -111,7 +124,8 @@ class Board
       @ship3_ary_p2.shuffle!
       @ship3_p2 = @ship3_ary_p2[0]
 
-      @ship4_ary_p2 =  [["N1", "O1"], ["B6", "C6"], ["T1", "T2"], ["T11", "T12"], ["Q8", "R8"], ["P19", "P20"], ["B7, B8"]]
+      @ship4_ary_p2 =  [["N1", "O1"], ["B6", "C6"], ["T1", "T2"], ["T11", "T12"], ["Q8", "R8"], ["P19", "P20"], ["B7, B8"], ["H19", "H20"],
+      ["H17", "H18"]]
       @ship4_ary_p2.shuffle!
       @ship4_p2 = @ship4_ary_p2[0]
 
@@ -152,9 +166,10 @@ end
 end
 
 
+def load_turns
+  Turn.create(ships_id: 4, name: "player1", position: "D4", h_or_m: "HIT")
+
+end
 
 
-
-
-#
-# binding.pry
+binding.pry
