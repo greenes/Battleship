@@ -16,7 +16,7 @@ require 'pry'
 
       class Turn < ActiveRecord::Base
         has_one :player
-        has_one :ship
+        # has_one :ship
         # validations :position, :h_or_m, :name, presence: true
       end
 
@@ -172,4 +172,4 @@ def load_turns
 end
 
 
-binding.pry
+# binding.pry
