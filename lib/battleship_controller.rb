@@ -95,7 +95,7 @@ require 'pry'
                       end
                     end
                   end
-
+binding.pry
                   Turn.where(name: "player1", h_or_m: "miss").each do |turn|
                     @turnhistory << turn.position
                     board1.board.map! do |x|
@@ -181,16 +181,16 @@ require 'pry'
 #Adds the position to player1's turn history, to player1's hit history, and updates player1's board
                        if board1.ship1.include?(@torp_position) == true
                          @ship1_hits << @torp_position
-                         Turn.create(ship_id: 1, name: "player1", position: @torp_position, h_or_m: "HIT", ship: "battleship1")
+                         Turn.create(name: "player1", position: @torp_position, h_or_m: "HIT", ship: "battleship1")
                        elsif board1.ship2.include?(@torp_position) == true
                          @ship2_hits << @torp_position
-                         Turn.create(ship_id: 2, name: "player1", position: @torp_position, h_or_m: "HIT", ship: "battleship2")
+                         Turn.create(name: "player1", position: @torp_position, h_or_m: "HIT", ship: "battleship2")
                        elsif board1.ship3.include?(@torp_position) == true
                          @ship3_hits << @torp_position
-                         Turn.create(ship_id: 3, name: "player1", position: @torp_position, h_or_m: "HIT", ship: "destroyer")
+                         Turn.create(name: "player1", position: @torp_position, h_or_m: "HIT", ship: "destroyer")
                        elsif board1.ship4.include?(@torp_position)== true
                          @ship4_hits << @torp_position
-                         Turn.create(ship_id: 4, name: "player1", position: @torp_position, h_or_m: "HIT", ship: "submarine")
+                         Turn.create(name: "player1", position: @torp_position, h_or_m: "HIT", ship: "submarine")
                        end
                      end
 
@@ -214,7 +214,7 @@ require 'pry'
                       end
 
 #Checks to see make sure the player1's position is within the board and returns a miss
-                    elsif board1.board.include?(@torp_position) == true
+                  elsif board1.board.include?(@torp_position) == true
                       system "clear"
                       puts "launching torpedo..............."
                       puts "        ~~     (\\\\_____________________"
@@ -224,7 +224,7 @@ require 'pry'
                       system "clear"
                       puts ")`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_"
                       puts "                       << miss >>"
-                      Turn.create(name: "player1", position: @torp_position, h_or_m: "miss")
+                      Turn.create(name: "player1", position: @torp_position, h_or_m: "miss", ship: " ")
 #Adds position to player1's turn history
                       @turnhistory << @torp_position
                       board1.board.map! {|x| x == @torp_position? "[0]": x}
@@ -270,16 +270,16 @@ require 'pry'
 #Adds the position to player2's turn history, to player2's hit history, and updates player2's board
                            if board2.ship1_p2.include?(@torp_position) == true
                              @ship1_hits2 << @torp_position
-                             Turn.create(ship_id: 5, name: "player2", position: @torp_position, h_or_m: "HIT", ship: "battleship1")
+                             Turn.create(name: "player2", position: @torp_position, h_or_m: "HIT", ship: "battleship1")
                            elsif board2.ship2_p2.include?(@torp_position) == true
                              @ship2_hits2 << @torp_position
-                             Turn.create(ship_id: 6, name: "player2", position: @torp_position, h_or_m: "HIT", ship: "battleship2")
+                             Turn.create(name: "player2", position: @torp_position, h_or_m: "HIT", ship: "battleship2")
                            elsif board2.ship3_p2.include?(@torp_position) == true
                              @ship3_hits2 << @torp_position
-                             Turn.create(ship_id: 7, name: "player2", position: @torp_position, h_or_m: "HIT", ship: "destroyer")
+                             Turn.create(name: "player2", position: @torp_position, h_or_m: "HIT", ship: "destroyer")
                            elsif board2.ship4_p2.include?(@torp_position)== true
                              @ship4_hits2 << @torp_position
-                             Turn.create(ship_id: 8, name: "player2", position: @torp_position, h_or_m: "HIT", ship: "submarine")
+                             Turn.create(name: "player2", position: @torp_position, h_or_m: "HIT", ship: "submarine")
                            end
                          end
 
@@ -311,7 +311,7 @@ require 'pry'
                             system "clear"
                             puts ")`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_)`'-.,_"
                             puts "                    << miss >>"
-                            Turn.create(name: "player2", position: @torp_position, h_or_m: "miss")
+                            Turn.create(name: "player2", position: @torp_position, h_or_m: "miss", ship: " ")
 #Add position to player2's turn history
                             @turnhistory2 << @torp_position
                             board2.board.map! {|x| x == @torp_position? "[0]": x}
