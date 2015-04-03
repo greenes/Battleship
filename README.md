@@ -41,4 +41,6 @@ they have made hits, and "[0]"'s where they have missed.
 
 When the player selects (4) the player sees a battleship and the program closes.
 
+When the player selects "load" they players can view their scores from last time, and load the boards with the same ships from the previous game. But, when adding the hits and misses back onto the board, there are bugs that turn the board arrays into nil, preventing the game from working correctly.
+
 There is no seed data for this program because either a new game is started, with no turns taken by either player yet, or the previous game is loaded, for which there are specific turns made by each person.
